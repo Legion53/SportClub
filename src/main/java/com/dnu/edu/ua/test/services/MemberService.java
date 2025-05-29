@@ -11,13 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class MemberService {
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
-    @Autowired
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
     public List<Member> getAllMembers() {
         return memberRepository.findAll();
     }

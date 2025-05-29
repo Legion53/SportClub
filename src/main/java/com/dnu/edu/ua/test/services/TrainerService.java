@@ -10,13 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class TrainerService {
-    private TrainerRepository trainerRepository;
+    private final TrainerRepository trainerRepository;
 
-    @Autowired
-    public TrainerService(TrainerRepository trainerRepository) {
-        this.trainerRepository = trainerRepository;
-    }
     public List<Trainer> getAllTrainers() {
         return trainerRepository.findAll();
     }

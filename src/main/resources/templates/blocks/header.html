@@ -1,0 +1,17 @@
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #28a745;">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/dumbbell.png" alt="SportClub" style="height: 30px; margin-right: 10px;">
+                SportClubApp
+            </a>
+
+            <div class="d-flex">
+                <a class="btn btn-outline-light me-2" th:href="@{/}">Головна</a>
+                <a class="btn btn-outline-light me-2" th:href="@{/profile}" th:if="${#authorization.expression('isAuthenticated()')}">Профіль</a>
+                <a class="btn btn-outline-light" th:href="@{/logout}" th:if="${#authorization.expression('isAuthenticated()')}">Вийти</a>
+                <a class="btn btn-light" th:href="@{/login}" th:unless="${#authorization.expression('isAuthenticated()')}">Увійти</a>
+            </div>
+        </div>
+    </nav>
+</div>

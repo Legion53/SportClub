@@ -12,13 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class TrainingSessionService {
-    private TrainingSessionRepository trainingSessionRepository;
+    private final TrainingSessionRepository trainingSessionRepository;
 
-    @Autowired
-    public TrainingSessionService(TrainingSessionRepository trainingSessionRepository) {
-        this.trainingSessionRepository = trainingSessionRepository;
-    }
     public List<TrainingSession> getAllSessions() {
         return trainingSessionRepository.findAll();
     }

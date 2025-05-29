@@ -8,6 +8,10 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "members")
 public class Member {
@@ -23,43 +27,4 @@ public class Member {
     @Column(name = "join_date")
     private LocalDate joinDate;
 
-    public Member() {
-
-    }
-    public Member(String name, String membershipType, LocalDate joinDate) {
-        this.name = name;
-        this.membershipType = membershipType;
-        this.joinDate = joinDate;
-    }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMembershipType() {
-        return membershipType;
-    }
-
-    public void setMembershipType(String membershipType) {
-        this.membershipType = membershipType;
-    }
-
-    public LocalDate getJoinDate() {
-        return joinDate;
-    }
-
-    public void setJoinDate(LocalDate joinDate) {
-        this.joinDate = joinDate;
-    }
 }
