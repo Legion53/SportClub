@@ -1,5 +1,5 @@
 # Використання офіційного образу Maven для білду
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 # Встановлюємо робочу директорію всередині контейнера
 WORKDIR /app
@@ -11,7 +11,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Використання легкого OpenJDK для фінального контейнера
-FROM eclipse-temurin:17-jdk-jammy
+FROM eclipse-temurin:21-jdk-jammy
 
 # Встановлюємо робочу директорію
 WORKDIR /app
@@ -20,7 +20,7 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
 # Відкриваємо порт (Render автоматично визначає його)
-EXPOSE 8080
+EXPOSE 8081
 
 # Запускаємо Spring Boot-додаток
 ENTRYPOINT ["java", "-jar", "app.jar"]
