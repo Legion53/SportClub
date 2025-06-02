@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.logging.Logger;
+
 @Controller
 @AllArgsConstructor
 public class RegistrationController {
     private final UserService userService;
+    private static final Logger LOG = Logger.getLogger(RegistrationController.class.getName());
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -23,6 +26,7 @@ public class RegistrationController {
     }
     @PostMapping("/registration")
     public String addUser(@ModelAttribute("userForm") @Valid User user, BindingResult bindingResult, Model model) {
+        LOG.info("Registrating new user");
         if (bindingResult.hasErrors()) {
             return "registration";
         }
