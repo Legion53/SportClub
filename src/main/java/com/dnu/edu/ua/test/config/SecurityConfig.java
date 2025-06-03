@@ -21,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @AllArgsConstructor
 public class SecurityConfig {
 
-    private final MemberUserDetailsService bankUserDetailsService;
+    private final MemberUserDetailsService memberUserDetailsService;
     private final JwtFilter jwtFilter;
 
     @Bean
@@ -57,7 +57,7 @@ public class SecurityConfig {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder
-                .userDetailsService(bankUserDetailsService)
+                .userDetailsService(memberUserDetailsService)
                 .passwordEncoder(passwordEncoder());
         return authenticationManagerBuilder.build();
     }
